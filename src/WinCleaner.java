@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class WinCleaner {
-
+//test
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		boolean running = true;

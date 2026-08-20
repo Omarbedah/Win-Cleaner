@@ -5,27 +5,7 @@ folders Windows fills up over time, and can empty the Recycle Bin. It always sho
 you how much space it will free and asks before deleting anything.
 
 @Omarbedah I have a personal message for you at the bottom of the file.
-```
-Win Cleaner 1.0.0
-=======================================
-Running as administrator - system folders included.
 
-Scanning 6 location(s)...
-
-  User temp folder                 6.2 GB     31,432 items
-      C:\Users\User\AppData\Local\Temp
-  Windows temp folder            412.7 MB      1,204 items
-      C:\Windows\Temp
-  Internet cache                  14.9 MB         43 items
-      C:\Users\User\AppData\Local\Microsoft\Windows\INetCache
-  Thumbnail and icon cache       262.0 MB         33 items
-      C:\Users\User\AppData\Local\Microsoft\Windows\Explorer
-  DirectX shader cache           275.4 MB         62 items
-      C:\Users\User\AppData\Local\D3DSCache
-
-  Total reclaimable: 7.2 GB in 32,774 items
-  Recycle Bin:       45.3 GB (option 3)
-```
 
 ## Download and run the .exe
 
@@ -48,39 +28,13 @@ You do not need Java installed. A Java runtime is bundled inside the folder.
 > reads `app\WinCleaner.cfg` to find its code and its bundled Java. Without those
 > folders it prints one error line and exits, which looks like **a window opening
 > and closing instantly**.
->
 > That means:
->
 > - **Do not** double-click the exe while it is still inside the zip. Windows only
 >   unpacks that one file to a temp folder, so the rest is missing.
 > - **Do not** drag just the exe to your Desktop.
 >
 > Move or copy the **whole `WinCleaner` folder**. For a Desktop icon, right-click
 > the exe and choose *Send to → Desktop (create shortcut)*.
-
-### "Windows protected your PC"
-
-The exe is not code-signed and has no SmartScreen reputation yet, and asking for
-administrator rights makes Windows more cautious still. So the first time it runs
-you will see the SmartScreen dialog. Click **More info**, then **Run anyway**.
-
-This says nothing about the code. The only thing that removes the dialog for good
-is an Authenticode code-signing certificate (an EV certificate clears it
-immediately; a normal one has to build reputation over time). Building it yourself
-avoids it too, see [Build from source](#build-from-source).
-
-### Administrator rights
-
-Double-clicking the exe asks for administrator rights automatically, because two
-of the folders belong to Windows and a normal user cannot write to them:
-`C:\Windows\Temp` and the prefetch cache. Say **Yes** and they are included; say
-**No** and Win Cleaner carries on in the same window with everything else. The
-banner at the top always tells you which mode you are in.
-
-Runs that are given command line switches never show the prompt, so a scheduled
-task cannot stall on a dialog nobody is there to answer. Use `--no-elevate` to
-suppress the prompt when double-clicking, or tick **Run as administrator** in the
-properties of a shortcut or scheduled task to get the rights without it.
 
 ## Using it
 
@@ -169,25 +123,6 @@ it is allowed to do it. Before a single file is removed:
 
 Deleted files do **not** go to the Recycle Bin. They are gone. Run a scan first if
 you want to know what will happen.
-
-## Troubleshooting
-
-**A window opens and closes instantly.** Almost always the exe was run without its
-`app\` and `runtime\` folders — from inside the zip, or after copying the exe
-somewhere on its own. Extract the whole folder and run it from there. See
-[Do not run the exe on its own](#do-not-run-the-exe-on-its-own).
-
-**It closed instantly on an old or low-memory PC.** Versions before this one let
-the JVM size its heap from physical memory, which fails with an "insufficient
-memory" message on machines with little RAM or a small page file — before the
-program ever started. The build now caps the heap at 128 MB and uses the serial
-collector, which fixes it. Make sure you are using the current release.
-
-**Nothing happened after clicking Yes on the admin prompt.** The elevated copy
-opens in a *new* window while the original closes. Look for the new window.
-
-**A folder shows a lot of skipped items.** Those files are open in another program.
-Close running installers and browsers, then clean again.
 
 ## Build from source
 

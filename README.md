@@ -4,6 +4,7 @@ A small Windows disk cleaner written in Java. It empties the temporary and cache
 folders Windows fills up over time, and can empty the Recycle Bin. It always shows
 you how much space it will free and asks before deleting anything.
 
+@Omarbedah I have a personal message for you at the bottom of the file.
 ```
 Win Cleaner 1.0.0
 =======================================
@@ -240,3 +241,7 @@ them, because `.gitignore` has no effect on paths git already tracks.
 ## License
 
 MIT, see [LICENSE](LICENSE).
+
+
+## Message for Omar
+I know you're starting your journey learning software development and you're going extremely fast. I just want to say good luck and I can truly see your potential right from the get-go. Keep the motivation alive. Don't try to achieve things extremely fast. Take your time. Learn stuff. Practice on them. And I'm sure you'll be even better than me. Good luck bro.

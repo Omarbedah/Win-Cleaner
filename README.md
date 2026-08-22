@@ -6,7 +6,6 @@ you how much space it will free and asks before deleting anything.
 
 @Omarbedah I have a personal message for you at the bottom of the file.
 
-
 ## Download and run the .exe
 
 1. Go to the **Releases** page of this repository and download
@@ -29,12 +28,13 @@ You do not need Java installed. A Java runtime is bundled inside the folder.
 > folders it prints one error line and exits, which looks like **a window opening
 > and closing instantly**.
 > That means:
+>
 > - **Do not** double-click the exe while it is still inside the zip. Windows only
 >   unpacks that one file to a temp folder, so the rest is missing.
 > - **Do not** drag just the exe to your Desktop.
 >
 > Move or copy the **whole `WinCleaner` folder**. For a Desktop icon, right-click
-> the exe and choose *Send to → Desktop (create shortcut)*.
+> the exe and choose _Send to → Desktop (create shortcut)_.
 
 ## Using it
 
@@ -85,16 +85,16 @@ WinCleaner.exe --all --yes
 
 ## What gets cleaned
 
-| Folder | Location | Why it is safe to delete |
-| --- | --- | --- |
-| User temp folder | `%TEMP%` | Scratch files and installer leftovers. Usually the biggest win. |
-| Windows temp folder | `C:\Windows\Temp` | System-wide scratch space. **Administrator only.** |
-| Windows prefetch | `C:\Windows\Prefetch` | App launch cache. Windows rebuilds it. **Administrator only.** |
-| Internet cache | `%LOCALAPPDATA%\Microsoft\Windows\INetCache` | Cached web content for Edge, IE and other WinINet apps. |
-| Thumbnail and icon cache | `%LOCALAPPDATA%\Microsoft\Windows\Explorer` | Explorer thumbnails, regenerated when you next browse a folder. |
-| DirectX shader cache | `%LOCALAPPDATA%\D3DSCache` | Compiled shaders, recompiled by games on next launch. |
-| Windows error reports | `%LOCALAPPDATA%\Microsoft\Windows\WER` | Queued crash reports. |
-| Crash dumps | `%LOCALAPPDATA%\CrashDumps` | Application crash dump files. |
+| Folder                   | Location                                     | Why it is safe to delete                                        |
+| ------------------------ | -------------------------------------------- | --------------------------------------------------------------- |
+| User temp folder         | `%TEMP%`                                     | Scratch files and installer leftovers. Usually the biggest win. |
+| Windows temp folder      | `C:\Windows\Temp`                            | System-wide scratch space. **Administrator only.**              |
+| Windows prefetch         | `C:\Windows\Prefetch`                        | App launch cache. Windows rebuilds it. **Administrator only.**  |
+| Internet cache           | `%LOCALAPPDATA%\Microsoft\Windows\INetCache` | Cached web content for Edge, IE and other WinINet apps.         |
+| Thumbnail and icon cache | `%LOCALAPPDATA%\Microsoft\Windows\Explorer`  | Explorer thumbnails, regenerated when you next browse a folder. |
+| DirectX shader cache     | `%LOCALAPPDATA%\D3DSCache`                   | Compiled shaders, recompiled by games on next launch.           |
+| Windows error reports    | `%LOCALAPPDATA%\Microsoft\Windows\WER`       | Queued crash reports.                                           |
+| Crash dumps              | `%LOCALAPPDATA%\CrashDumps`                  | Application crash dump files.                                   |
 
 Folders that do not exist on your machine, and the administrator-only ones when
 you are not elevated, are skipped and never appear in the list.
@@ -136,11 +136,11 @@ powershell -ExecutionPolicy Bypass -File build.ps1
 
 That produces:
 
-| Output | What it is |
-| --- | --- |
-| `dist\WinCleaner\WinCleaner.exe` | The executable, with a bundled Java runtime |
+| Output                              | What it is                                          |
+| ----------------------------------- | --------------------------------------------------- |
+| `dist\WinCleaner\WinCleaner.exe`    | The executable, with a bundled Java runtime         |
 | `dist\WinCleaner-1.0.0-windows.zip` | The same folder zipped, about 15 MB, ready to share |
-| `dist\WinCleaner-1.0.0.jar` | Portable jar, needs Java 17+ installed |
+| `dist\WinCleaner-1.0.0.jar`         | Portable jar, needs Java 17+ installed              |
 
 To run the jar instead of the exe:
 
@@ -153,16 +153,16 @@ sitting inside that folder and run it again.
 
 ### Source layout
 
-| File | Role |
-| --- | --- |
-| `src/WinCleaner.java` | Entry point, menu, command line arguments, output |
-| `src/Elevation.java` | Restarting as administrator through the UAC prompt |
-| `src/Targets.java` | Which folders to clean, and the administrator check |
-| `src/Guard.java` | The allow-list and protected-path rules |
-| `src/FileHelper.java` | Recursive delete and measure, link handling |
-| `src/CleanTarget.java` | One cleanable folder |
-| `src/CleanResult.java` | Running totals for a clean or scan |
-| `src/RecycleBin.java` | Recycle Bin size and emptying |
+| File                   | Role                                                |
+| ---------------------- | --------------------------------------------------- |
+| `src/WinCleaner.java`  | Entry point, menu, command line arguments, output   |
+| `src/Elevation.java`   | Restarting as administrator through the UAC prompt  |
+| `src/Targets.java`     | Which folders to clean, and the administrator check |
+| `src/Guard.java`       | The allow-list and protected-path rules             |
+| `src/FileHelper.java`  | Recursive delete and measure, link handling         |
+| `src/CleanTarget.java` | One cleanable folder                                |
+| `src/CleanResult.java` | Running totals for a clean or scan                  |
+| `src/RecycleBin.java`  | Recycle Bin size and emptying                       |
 
 Build output goes to `build\` and `dist\`. Neither belongs in git — if they were
 committed before the ignore rules existed, `git restore --staged dist` unstages
@@ -177,6 +177,6 @@ them, because `.gitignore` has no effect on paths git already tracks.
 
 MIT, see [LICENSE](LICENSE).
 
-
 ## Message for Omar
+
 I know you're starting your journey learning software development and you're going extremely fast. I just want to say good luck and I can truly see your potential right from the get-go. Keep the motivation alive. Don't try to achieve things extremely fast. Take your time. Learn stuff. Practice on them. And I'm sure you'll be even better than me. Good luck bro.
